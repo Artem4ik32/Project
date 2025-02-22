@@ -19,3 +19,12 @@ class ManagerForm(FlaskForm):
     email = StringField("Email", validators=[DataRequired(), Email()])
     password = PasswordField("Пароль", validators=[DataRequired()])
     submit = SubmitField("Зарееструватися")
+
+class Portfolio(FlaskForm):
+    position = StringField("Position", validators=[DataRequired()])
+    category = SelectField("Категорія", choices=[("dev", "Developer"), ("design", "Designer")], validators=[DataRequired()])
+    work_exp = IntegerField("Опит праці", validators=[NumberRange(min=0)], default=0)
+    money_want = IntegerField("Скільки хочете отримувати щомісячно ($)", validators=[DataRequired()])
+    english_level = RadioField("Ваш левел спілкування англійською", choices=[("no", "No English"), ("beginner", "Beginner/Elementary"), ("pre-int", "Pre-Intermediate"), ("int", "Intermediate"), ("upper-int", "Upper-Intermediate"), ("Pro", "Advanced")], validators=[DataRequired()])
+    knowledge_ukrainian = BooleanField("Розмовляю українською")
+    submit = SubmitField("Продовжити")
